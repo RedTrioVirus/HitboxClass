@@ -42,9 +42,26 @@ end)
 newHitbox:Start()
 ```
 
-# Methods
+# Hitbox Methods
 
 ### new(HitboxParams) -> (Hitbox, boolean)
 
-This function will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side.
+This method will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side.
+
+### Start : (Hitbox) -> ()
+
+This method will start the hitbox. The HitSomeone signal **will not** fire unless the hitbox is started with this method.
+
+### Stop : (Hitbox) -> ()
+
+This method will stop the hitbox by disconnecting all connections and removing the part being used if Part mode is being used.
+
+### SetPosition : (Hitbox, CFrame) -> ()
+
+This method will place the hitbox in the desired location. When a hitbox has been "welded", this method is nigh-useless until Unweld is used, so keep that in mind.
+
+### ClearTaggedChars : (Hitbox) -> ()
+
+This method clears the TaggedCharacters table within the Hitbox, allowing all things hit by the hitbox before to be hit by it again. Use this in order to use the same hitbox multiple times if need be.
+
 
