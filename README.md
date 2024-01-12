@@ -85,15 +85,33 @@ This method turns velocity prediction on or off. Velocity prediction is only act
 This method destroys the hitbox by first stopping the hitbox, clearing out all its tables, destroying the part used if there is one, then finally clearing itself.
 
 # Hitbox Parameters
-```lua
-Mode : "Magnitude" | "Part", -- determines whether or not the hitbox will be in Magnitude mode or Part mode. (REQUIRED)
-SizeOrPart : Vector3 | number | BasePart, -- Give this a number if Magnitude is used, this'll determine the radius of the circle. If using Part mode, give this a vector3 to have the module make a box for you or hand it a part to use as the hitbox (REQUIRED)
-InitialPosition : CFrame?, -- Starts the hitbox off at this CFrame.
-Blacklist : {Model}?, -- A blacklist that'll be used to exclude certain things from being hit by the hitbox. For instance, preventing a fire magic user from being hit by their own fireball.
-DebounceTime : number?, -- Time between hits on the same hitbox. Use this to allow things to be hit multiple times using the same hitbox.
-DotProductRequirement : DotProductRequirement?, -- Used for Magnitude mode, allowing a Dot Product to be calculated and checked. Only things within the Dot Product will be hit.
-ShowHitbox : boolean?, -- Shows the hitbox used in bright red.
-UseClient : Player?, -- Activates client-side mode. The hitbox will automatically be made on the client, and its results will be sent back to the server and fired through the HitSomeone signal.
-TickVal : number?, -- A custom ID for the hitbox if wanted. Defaults to the current server time using workspace:GetServerTimeNow().
-VelocityPrediction : boolean? -- Turns velocity prediction on or off from the beginning. It's on by default.
-```
+
+### Mode : "Magnitude" | "Part"
+Determines whether or not the hitbox will be in Magnitude mode or Part mode. (REQUIRED)
+
+### SizeOrPart : Vector3 | number | BasePart
+Give this a number if Magnitude is used; this will determine the radius of the circle. If using Part mode, give this a Vector3 to have the module make a box for you or hand it a part to use as the hitbox. (REQUIRED)
+
+### InitialPosition : CFrame?
+Starts the hitbox off at this CFrame.
+
+### Blacklist : {Model}?
+A blacklist that'll be used to exclude certain things from being hit by the hitbox. For instance, preventing a fire magic user from being hit by their own fireball.
+
+### DebounceTime : number?
+Time between hits on the same hitbox. Use this to allow things to be hit multiple times using the same hitbox.
+
+### DotProductRequirement : DotProductRequirement?
+Used for Magnitude mode, allowing a Dot Product to be calculated and checked. Only things within the Dot Product will be hit.
+
+### ShowHitbox : boolean?
+Shows the hitbox used in bright red.
+
+### UseClient : Player?
+Activates client-side mode. The hitbox will automatically be made on the client, and its results will be sent back to the server and fired through the HitSomeone signal.
+
+### TickVal : number?
+A custom ID for the hitbox if wanted. Defaults to the current server time using workspace:GetServerTimeNow().
+
+### VelocityPrediction : boolean?
+Turns velocity prediction on or off from the beginning. It's on by default.
