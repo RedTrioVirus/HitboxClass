@@ -48,20 +48,30 @@ newHitbox:Start()
 
 This method will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side.
 
-### Start : (Hitbox) -> ()
+### Start : (self : Hitbox) -> ()
 
 This method will start the hitbox. The HitSomeone signal **will not** fire unless the hitbox is started with this method.
 
-### Stop : (Hitbox) -> ()
+### Stop : (self : Hitbox) -> ()
 
 This method will stop the hitbox by disconnecting all connections and removing the part being used if Part mode is being used.
 
-### SetPosition : (Hitbox, CFrame) -> ()
+### SetPosition : (self : Hitbox, Position : CFrame) -> ()
 
 This method will place the hitbox in the desired location. When a hitbox has been "welded", this method is nigh-useless until Unweld is used, so keep that in mind.
 
-### ClearTaggedChars : (Hitbox) -> ()
+### ClearTaggedChars : (self : Hitbox) -> ()
 
 This method clears the TaggedCharacters table within the Hitbox, allowing all things hit by the hitbox before to be hit by it again. Use this in order to use the same hitbox multiple times if need be.
 
+### WeldTo : (self : Hitbox , PartToWeldTo : BasePart, OffsetCFrame : CFrame?) -> ()
 
+This method "welds" the hitbox in place at the desired Part with an offset defined by OffsetCFrame (default is the same CFrame as the part). Unless velocity predition is turned off, this will turn it on as well.
+
+### Unweld : (self : Hitbox) -> ()
+
+This method "unwelds" the hitbox, stopping it where it last was before the method was used.
+
+### ChangeWeldOffset : (self : Hitbox, OffsetCFrame : CFrame) -> ()
+
+This method changes the offset for the welded hitbox.
