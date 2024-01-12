@@ -45,6 +45,11 @@ end)
 
 newHitbox:Start()
 ```
+# Class Methods
+
+### ClearClientHitboxes : (Client : Player) -> ()
+
+This method will destroy all client-sided hitboxes. Recommended to be used when there's no reason for a player to have a currently active hitbox, like if they died.
 
 # Hitbox Methods
 
