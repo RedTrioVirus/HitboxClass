@@ -1,5 +1,5 @@
 # HitboxClass
-An incredibly easy yet powerful OOP-based hitbox module for Roblox.
+An incredibly easy yet powerful OOP-based hitbox module for Roblox. Completely type-checked to allow easy implementation and use.
 
 # How to Set Up
 First, drag the HitboxClass module into your desired place in ReplicatedStorage.
