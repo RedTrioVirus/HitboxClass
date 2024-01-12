@@ -41,3 +41,10 @@ end)
 
 newHitbox:Start()
 ```
+
+# Methods
+
+### new(HitboxParams) -> (Hitbox, boolean)
+
+This function will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side.
+
