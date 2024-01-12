@@ -1,6 +1,8 @@
 # HitboxClass
 An incredibly easy yet powerful OOP-based hitbox module for Roblox. Completely type-checked to allow easy implementation and use.
 
+HitboxClass comes with a variety of features such as easy client-sided hitboxes and velocity prediction.
+
 This module uses [Signal](https://sleitnick.github.io/RbxUtil/api/Signal/) by [Sleitnick](https://github.com/Sleitnick).
 
 # How to Set Up
@@ -85,6 +87,12 @@ This method turns velocity prediction on or off. Velocity prediction is only act
 ### Destroy : (self : Hitbox) -> ()
 
 This method destroys the hitbox by first stopping the hitbox, clearing out all its tables, destroying the part used if there is one, then finally clearing itself.
+
+# Signals
+
+### HitSomeone : () -> ({Model})
+
+When fired by the hitbox, it will return a table of the models hit within the hitbox.
 
 # Hitbox Parameters
 
