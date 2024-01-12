@@ -49,13 +49,21 @@ newHitbox:Start()
 
 ### ClearClientHitboxes : (Client : Player) -> ()
 
-This method will destroy all client-sided hitboxes. Recommended to be used when there's no reason for a player to have a currently active hitbox, like if they died.
+This method will destroy all client-sided hitboxes. Recommended to be used when there's no reason for a player to have a currently active hitbox, like if they died. This also destroys the hitboxes in the cache.
+
+### ClearHitboxesWithID : (ID : string | number) -> ()
+
+This method will destroy all hitboxes with the specified ID. This also destroys the hitboxes on the client if they are client-sided.
+
+### GetHitboxCache : () -> {Hitbox}
+
+This method will return the server's hitbox cache. This is where all of the game's hitbox objects are stored.
 
 # Hitbox Methods
 
 ### new(HitboxParams) -> (Hitbox, boolean) (YIELDS FOR CLIENT-SIDED HITBOXES)
 
-This method will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side. ***This will yield for a maximum of 1.5 seconds if the hitbox is going to be client-sided!***
+This method will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-sided. ***This will yield for a maximum of 1.5 seconds if the hitbox is going to be client-sided!***
 
 ### Start : (self : Hitbox) -> ()
 
@@ -91,7 +99,7 @@ This method turns velocity prediction on or off. Velocity prediction is only act
 
 ### Destroy : (self : Hitbox) -> ()
 
-This method destroys the hitbox by first stopping the hitbox, clearing out all its tables, destroying the part used if there is one, then finally clearing itself.
+This method destroys the hitbox by first stopping the hitbox, clearing out all its tables, disconnecting all connections to its HitSomeone signal, destroying the part used if there is one, then finally clearing itself.
 
 # Signals
 
@@ -101,14 +109,11 @@ When fired by the hitbox, it will return a table of the models hit within the hi
 
 # Hitbox Parameters
 
-### Mode : "Magnitude" | "Part" (REQUIRED)
-Determines whether or not the hitbox will be in Magnitude mode or Part mode. 
-
 ### SizeOrPart : Vector3 | number | BasePart (REQUIRED)
-Give this a number if Magnitude is used; this will determine the radius of the circle. If using Part mode, give this a Vector3 to have the module make a box for you or hand it a part to use as the hitbox. 
+Give this a number if Magnitude mode is used; this will determine the radius of the circle. Giving this method a Vector3 or BasePart will activate Part mode instead, making the hitbox use the SpatialQuery method GetPartsInPart for its calculations. Giving it a Vector3 will automatically generate a part for you.
 
 ### InitialPosition : CFrame?
-Starts the hitbox off at this CFrame.
+Starts the hitbox off at this CFrame. By default, hitboxes will be placed at the center of the world at CFrame.new(0,0,0).
 
 ### Blacklist : {Model}?
 A blacklist that'll be used to exclude certain things from being hit by the hitbox. For instance, preventing a fire magic user from being hit by their own fireball.
