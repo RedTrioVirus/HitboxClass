@@ -105,7 +105,7 @@ Time between hits on the same hitbox. Use this to allow things to be hit multipl
 Used for Magnitude mode, allowing a Dot Product to be calculated and checked. Only things within the Dot Product will be hit.
 
 ### ShowHitbox : boolean?
-Shows the hitbox used in bright red.
+Shows the hitbox used in bright red. Defaults to false.
 
 ### UseClient : Player?
 Activates client-side mode. The hitbox will automatically be made on the client provided, and its results will be sent back to the server and fired through the HitSomeone signal.
@@ -114,7 +114,7 @@ Activates client-side mode. The hitbox will automatically be made on the client 
 A custom ID for the hitbox if wanted. Defaults to the current server time using workspace:GetServerTimeNow().
 
 ### VelocityPrediction : boolean?
-Turns velocity prediction on or off from the beginning. It's on by default.
+Turns velocity prediction on or off from the beginning. Defaults to on.
 
 # Dot Product Requirement
 
@@ -125,7 +125,7 @@ Determines the threshold at which a person will be counted. For instance, 0 mean
 The part the vector will be based off of.
 
 ### VectorType : ("LookVector" | "UpVector" | "RightVector")?
-Which vector will be used from the part provided.
+Which vector will be used from the part provided. Defaults to LookVector.
 
 ### Negative : boolean?
-If the vector will be flipped. For instance, a RightVector being turned to the left.
+If the vector will be flipped. For instance, a RightVector being turned to the left. Defaults to false.
