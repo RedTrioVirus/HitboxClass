@@ -1,7 +1,7 @@
 # HitboxClass
 An incredibly easy yet powerful OOP-based hitbox module for Roblox. Completely type-checked to allow easy implementation and use.
 
-This module uses [GoodSignal](https://devforum.roblox.com/t/lua-signal-class-comparison-optimal-goodsignal-class/1387063) by [stravant](https://gist.github.com/stravant).
+This module uses [Signal](https://sleitnick.github.io/RbxUtil/api/Signal/) by [Sleitnick](https://github.com/Sleitnick).
 
 # How to Set Up
 First, drag the HitboxClass module into your desired place in ReplicatedStorage.
