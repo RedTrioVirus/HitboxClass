@@ -75,3 +75,11 @@ This method "unwelds" the hitbox, stopping it where it last was before the metho
 ### ChangeWeldOffset : (self : Hitbox, OffsetCFrame : CFrame) -> ()
 
 This method changes the offset for the welded hitbox.
+
+### SetVelocityPrediction : (self : Hitbox, state : boolean) -> ()
+
+This method turns velocity prediction on or off. Velocity prediction is only active while a hitbox is "welded".
+
+### Destroy : (self : Hitbox) -> ()
+
+This method destroys the hitbox by first stopping the hitbox, clearing out all its tables, destroying the part used if there is one, then finally clearing itself.
