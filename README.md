@@ -129,7 +129,7 @@ Turns velocity prediction on or off from the beginning. Defaults to on.
 # Dot Product Requirement
 
 ### DotProduct : number (REQUIRED)
-Determines the threshold at which a person will be counted. For instance, 0 means they have to be at least 180 degrees from the vector used for the dot product.
+Determines the threshold at which a person will be counted. For instance, 0 means they can't be at most 90 degrees from the vector used for the dot product.
 
 ### PartForVector : BasePart (REQUIRED)
 The part the vector will be based off of.
