@@ -48,9 +48,9 @@ newHitbox:Start()
 
 # Hitbox Methods
 
-### new(HitboxParams) -> (Hitbox, boolean)
+### new(HitboxParams) -> (Hitbox, boolean) (YIELDS FOR CLIENT-SIDED HITBOXES)
 
-This method will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side. **This will yield for a maximum of 1.5 seconds if the hitbox is going to be client-sided!**
+This method will return a hitbox and a boolean for whether or not the hitbox made a connection to the client. The boolean will always be true if the hitbox is server-side. ***This will yield for a maximum of 1.5 seconds if the hitbox is going to be client-sided!***
 
 ### Start : (self : Hitbox) -> ()
 
