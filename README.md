@@ -86,11 +86,11 @@ This method destroys the hitbox by first stopping the hitbox, clearing out all i
 
 # Hitbox Parameters
 
-### Mode : "Magnitude" | "Part"
-Determines whether or not the hitbox will be in Magnitude mode or Part mode. (REQUIRED)
+### Mode : "Magnitude" | "Part" (REQUIRED)
+Determines whether or not the hitbox will be in Magnitude mode or Part mode. 
 
-### SizeOrPart : Vector3 | number | BasePart
-Give this a number if Magnitude is used; this will determine the radius of the circle. If using Part mode, give this a Vector3 to have the module make a box for you or hand it a part to use as the hitbox. (REQUIRED)
+### SizeOrPart : Vector3 | number | BasePart (REQUIRED)
+Give this a number if Magnitude is used; this will determine the radius of the circle. If using Part mode, give this a Vector3 to have the module make a box for you or hand it a part to use as the hitbox. 
 
 ### InitialPosition : CFrame?
 Starts the hitbox off at this CFrame.
@@ -108,10 +108,24 @@ Used for Magnitude mode, allowing a Dot Product to be calculated and checked. On
 Shows the hitbox used in bright red.
 
 ### UseClient : Player?
-Activates client-side mode. The hitbox will automatically be made on the client, and its results will be sent back to the server and fired through the HitSomeone signal.
+Activates client-side mode. The hitbox will automatically be made on the client provided, and its results will be sent back to the server and fired through the HitSomeone signal.
 
 ### TickVal : number?
 A custom ID for the hitbox if wanted. Defaults to the current server time using workspace:GetServerTimeNow().
 
 ### VelocityPrediction : boolean?
 Turns velocity prediction on or off from the beginning. It's on by default.
+
+# Dot Product Requirement
+
+### DotProduct : number
+Determines the threshold at which a person will be counted. For instance, 0 means they have to be at least 180 degrees from the vector used for the dot product.
+
+### PartForVector : BasePart
+The part the vector will be based off of.
+
+### VectorType : ("LookVector" | "UpVector" | "RightVector")?
+Which vector will be used from the part provided.
+
+### Negative : boolean?
+If the vector will be flipped. For instance, a RightVector being turned to the left.
