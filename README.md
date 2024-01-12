@@ -26,4 +26,18 @@ local hitboxParams = {
 } :: HitboxTypes.HitboxParams
 ```
 
-"Test"
+Then make a new hitbox with your parameters. The HitboxClass.new function will return the hitbox and whether or not it successfully connected to the client. This will always be true if this is a server hitbox.
+
+```lua
+local newHitbox, connected = HitboxClass.new(hitboxParams)
+```
+
+Finally, connect to the HitSomeone signal and start the hitbox!
+
+```lua
+newHitbox.HitSomeone:Connect(function(hitChars)
+	print(hitChars)
+end)
+
+newHitbox:Start()
+```
