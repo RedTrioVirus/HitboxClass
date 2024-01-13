@@ -59,6 +59,20 @@ This method will destroy all hitboxes with the specified ID. This also destroys 
 
 This method will return the server's hitbox cache. This is where all of the game's hitbox objects are stored.
 
+# Class Settings
+
+### Alive Folder
+
+This is the folder you store all your NPCs and players in. HitboxClass cannot run without this being set.
+
+### Projectile Folder
+
+This is usually the folder you store all your VFX or extra stuff in that you normally blacklist for your raycasts. This is where the hitbox will be placed while in Part mode.
+
+### Velocity Prediction Constant
+
+Reflects how much the welded part's velocity will affect the position of the hitbox. The higher the number, the less the velocity will affect it. Default is 6.
+
 # Hitbox Methods
 
 ### new(HitboxParams) -> (Hitbox, boolean) (YIELDS FOR CLIENT-SIDED HITBOXES)
@@ -71,7 +85,7 @@ This method will start the hitbox. The HitSomeone signal **will not** fire unles
 
 ### Stop : (self : Hitbox) -> ()
 
-This method will stop the hitbox by disconnecting all connections and removing the part being used if Part mode is being used.
+This method will stop the hitbox by disconnecting all connections and removing the part being used if Part mode is being used. 
 
 ### SetPosition : (self : Hitbox, Position : CFrame) -> ()
 
@@ -97,6 +111,10 @@ This method changes the offset for the welded hitbox.
 
 This method turns velocity prediction on or off. Velocity prediction is only active while a hitbox is "welded".
 
+### SetDebug : (self : Hitbox, state : boolean) -> ()
+
+This method turns debug mode on or off.
+
 ### Destroy : (self : Hitbox) -> ()
 
 This method destroys the hitbox by first stopping the hitbox, clearing out all its tables, disconnecting all connections to its HitSomeone signal, destroying the part used if there is one, then finally clearing itself.
@@ -110,42 +128,67 @@ When fired by the hitbox, it will return a table of the models hit within the hi
 # Hitbox Parameters
 
 ### SizeOrPart : Vector3 | number | BasePart (REQUIRED)
-Give this a number if Magnitude mode is used; this will determine the radius of the circle. Giving this method a Vector3 or BasePart will activate Part mode instead, making the hitbox use the SpatialQuery method GetPartsInPart for its calculations. Giving it a Vector3 will automatically generate a part for you.
+
+Give this a number if Magnitude or InRadius SpatialQuery is going to be used; this will determine the radius of the circle. Giving this method a Vector3 or BasePart will activate Part mode instead, making the hitbox use the SpatialQuery method GetPartsInPart for its calculations. Giving it a Vector3 will automatically generate a part for you.
 
 ### InitialPosition : CFrame?
+
 Starts the hitbox off at this CFrame. By default, hitboxes will be placed at the center of the world at CFrame.new(0,0,0).
 
+### SpatialQuery : ("InBox" | "InRadius" | "InPart")?
+
+The spatial query method to be used for the hitbox's calculations. InPart is the most expensive, while InBox and InRadius aren't as expensive. Magnitude is the least expensive out of these.
+
+Depending on what is passed in the SizeOrPart parameter, the following can happen:
+
+| Number     | Description |
+| ----------- | ----------- |
+| InBox      | The method will use PartBoundsInBox with a cube, all 3 axis being the same length as the number provided.       |
+| InRadius   | The method will use the PartBoundsInRadius with a sphere, the radius being the same length as the number provided.         |
+| InPart   | The method will create a sphere to use for PartsInPart, the radius being the same length as the number provided.        |
+
 ### Blacklist : {Model}?
+
 A blacklist that'll be used to exclude certain things from being hit by the hitbox. For instance, preventing a fire magic user from being hit by their own fireball.
 
 ### DebounceTime : number?
+
 Time between hits on the same hitbox. Use this to allow things to be hit multiple times using the same hitbox.
 
 ### DotProductRequirement : DotProductRequirement?
+
 Used for Magnitude mode, allowing a Dot Product to be calculated and checked. Only things within the Dot Product will be hit.
 
 ### ShowHitbox : boolean?
+
 Shows the hitbox used in bright red. Defaults to false.
 
 ### UseClient : Player?
+
 Activates client-side mode. The hitbox will automatically be made on the client provided, and its results will be sent back to the server and fired through the HitSomeone signal.
 
 ### TickVal : number?
+
 A custom ID for the hitbox if wanted. Defaults to the current server time using workspace:GetServerTimeNow().
 
 ### VelocityPrediction : boolean?
+
 Turns velocity prediction on or off from the beginning. Defaults to on.
 
 # Dot Product Requirement
 
 ### DotProduct : number (REQUIRED)
+
 Determines the threshold at which a person will be counted. For instance, 0 means they can't be at most 90 degrees from the vector used for the dot product.
 
 ### PartForVector : BasePart (REQUIRED)
+
 The part the vector will be based off of.
 
 ### VectorType : ("LookVector" | "UpVector" | "RightVector")?
+
 Which vector will be used from the part provided. Defaults to LookVector.
 
 ### Negative : boolean?
+
 If the vector will be flipped. For instance, a RightVector being turned to the left. Defaults to false.
