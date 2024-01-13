@@ -24,10 +24,14 @@ local HitboxClass = require(ReplicatedStorage.Modules.HitboxClass)
 local HitboxTypes = require(ReplicatedStorage.Modules.HitboxClass.Types)
 
 local hitboxParams = {
-	Mode = "Magnitude",
-	InitialPosition = CFrame.new(0,0,0),
 	SizeOrPart = 5,
+	DebounceTime = 1,
+	Debug = true,
 } :: HitboxTypes.HitboxParams
+ --[[
+	A magnitude hitbox that can hit anybody, with 1 second between possible hits for each character!
+	It'll also show itself in red!
+ ]]  
 ```
 
 Then make a new hitbox with your parameters. The HitboxClass.new function will return the hitbox and whether or not it successfully connected to the client. This will always be true if this is a server hitbox.
