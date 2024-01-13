@@ -49,6 +49,22 @@ end)
 
 newHitbox:Start()
 ```
+
+### To make a client-sided hitbox:
+
+```lua
+local hitboxParams = {
+	SizeOrPart = 5,
+	DebounceTime = 1,
+	UseClient = player : Player, -- add a player into the UseClient parameter!
+	Debug = true,
+} :: HitboxTypes.HitboxParams
+```
+
+Just add a player into the UseClient parameter, after that just handle it like you would a server-sided hitbox.
+
+***Keep in mind that calling HitboxClass.new() for a client-sided hitbox will YIELD for a max of 1.5 seconds in order to try and secure a connection to the client.***
+
 # Class Methods
 
 ## ClearClientHitboxes : (Client : Player) -> ()
