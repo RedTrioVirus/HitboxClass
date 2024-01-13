@@ -135,7 +135,7 @@ Give this a number if Magnitude or InRadius SpatialQuery is going to be used; th
 
 Starts the hitbox off at this CFrame. By default, hitboxes will be placed at the center of the world at CFrame.new(0,0,0).
 
-## SpatialQuery : ("InBox" | "InRadius" | "InPart")?
+## SpatialOption : ("InBox" | "InRadius" | "InPart")?
 
 The spatial query method to be used for the hitbox's calculations. InPart is the most expensive, while InBox and InRadius aren't as expensive. Magnitude is the least expensive out of these.
 
@@ -145,9 +145,31 @@ Depending on what is passed in the SizeOrPart parameter, the following can happe
 
 | Option     | Description |
 | ----------- | ----------- |
-| InBox      | The method will use PartBoundsInBox with a cube, all 3 axis being the same length as the number provided.       |
 | InRadius   | The method will use the PartBoundsInRadius with a sphere, the radius being the same length as the number provided.         |
+| InBox      | The method will use PartBoundsInBox with a cube, all 3 axis being the same length as the number provided.       |
 | InPart   | The method will create a sphere to use for PartsInPart, the radius being the same length as the number provided.        |
+
+***If no SpatialOption parameter is passed, the hitbox will default to using Magnitude!***
+
+### Vector3
+
+| Option     | Description |
+| ----------- | ----------- |
+| InRadius   | Can't be used.         |
+| InBox      | The method will use PartBoundsInBox with a cube, the size being determined by the Vector3 provided.     |
+| InPart   | The method will create a cube to use for PartsInPart, the size being determined by the Vector3 provided.        |
+
+***If no SpatialOption parameter is passed, the hitbox will default to using PartBoundsInBox!***
+
+### BasePart
+
+| Option     | Description |
+| ----------- | ----------- |
+| InRadius   | Can't be used.         |
+| InBox      | Can't be used.       |
+| InPart   | The method will use the part provided for the PartsInPart spatial query.       |
+
+***Passing in a BasePart will cause the hitbox to always use PartsInPart!***
 
 ## Blacklist : {Model}?
 
