@@ -225,6 +225,21 @@ Turns velocity prediction on or off from the beginning. Defaults to on.
 
 Determines the threshold at which a person will be counted. For instance, 0 means they can't be at most 90 degrees from the vector used for the dot product.
 
+### Example
+```lua
+local DotProductReq = {
+	DotProduct = 0,
+	PartForVector = character.HumanoidRootPart
+} :: HitboxTypes.DotProductRequirement
+
+local hitboxParams = {
+	SizeOrPart = 5,
+	DotProductRequirement = DotProductReq,
+} :: HitboxTypes.HitboxParams
+```
+
+The above code will use the HumanoidRootPart's LookVector as the first Vector3. When someone is within the magnitude hitbox, it'll find the dot product of the HumanoidRootPart's LookVector and the vector drawn from the HumanoidRootPart to the person within the hitbox.
+
 ## PartForVector : BasePart (REQUIRED)
 
 The part the vector will be based off of.
