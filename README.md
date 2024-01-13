@@ -203,7 +203,7 @@ Time between hits on the same hitbox. Use this to allow things to be hit multipl
 
 Used for Magnitude mode, allowing a Dot Product to be calculated and checked. Only things within the Dot Product will be hit.
 
-## ShowHitbox : boolean?
+## Debug : boolean?
 
 Shows the hitbox used in bright red. Defaults to false.
 
