@@ -141,7 +141,9 @@ The spatial query method to be used for the hitbox's calculations. InPart is the
 
 Depending on what is passed in the SizeOrPart parameter, the following can happen:
 
-| Number     | Description |
+
+## Number
+| Option     | Description |
 | ----------- | ----------- |
 | InBox      | The method will use PartBoundsInBox with a cube, all 3 axis being the same length as the number provided.       |
 | InRadius   | The method will use the PartBoundsInRadius with a sphere, the radius being the same length as the number provided.         |
