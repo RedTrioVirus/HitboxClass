@@ -211,9 +211,9 @@ Shows the hitbox used in bright red. Defaults to false.
 
 Activates client-side mode. The hitbox will automatically be made on the client provided, and its results will be sent back to the server and fired through the HitSomeone signal.
 
-## TickVal : number?
+## ID : (string | number)?
 
-A custom ID for the hitbox if wanted. Defaults to the current server time using workspace:GetServerTimeNow().
+A custom ID for the hitbox if wanted.
 
 ## VelocityPrediction : boolean?
 
