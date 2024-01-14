@@ -149,7 +149,7 @@ When fired by the hitbox, it will return a table of the models hit within the hi
 
 ## SizeOrPart : Vector3 | number | BasePart (REQUIRED)
 
-Give this a number if Magnitude or InRadius SpatialQuery is going to be used; this will determine the radius of the circle. Giving this method a Vector3 or BasePart will activate Part mode instead, making the hitbox use the SpatialQuery method GetPartsInPart for its calculations. Giving it a Vector3 will automatically generate a part for you.
+Depending on whether you give this a number, Vector3, Basepart, the module will handle itself in different ways depending on what SpatialOption you give it. Read the tables below the SpatialOption parameter to get a full overview of it.
 
 ## InitialPosition : CFrame?
 
