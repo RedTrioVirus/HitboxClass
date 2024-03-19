@@ -276,6 +276,8 @@ This class is used inside Hitbox objects, but they can also be used outside of H
 
 This method will return an IntervalTimer object that elapses at the interval provided in the TimeOut argument.
 
+It's recommended to keep the TimeOut argument set to only 0.1 or higher! Anything lower can cause issues.
+
 ## On(self : IntervalTimer) -> ()
 
 This method will turn on a timer that can been turned off using the Off method.
