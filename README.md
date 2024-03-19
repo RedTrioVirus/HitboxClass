@@ -278,13 +278,15 @@ This method will return an IntervalTimer object that elapses at the interval pro
 
 It's recommended to keep the TimeOut argument set to only 0.1 or higher! Anything lower can cause issues.
 
+Timers are automatically started when created!
+
 ## On(self : IntervalTimer) -> ()
 
 This method will turn on a timer that can been turned off using the Off method.
 
 ## Off(self : IntervalTimer) -> ()
 
-This method will turn off a timer that can be turned on using the On method.
+This method will turn off a timer that is currently active.
 
 # Signals
 
