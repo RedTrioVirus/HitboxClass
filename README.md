@@ -143,7 +143,11 @@ This method destroys the hitbox by first stopping the hitbox, clearing out all i
 
 ## HitSomeone : () -> ({Model})
 
-When fired by the hitbox, it will return a table of the models hit within the hitbox.
+When fired by the hitbox, it will return a table of the models hit within the hitbox. This is the default signal, it's used whenever the LookingFor parameter is left empty or set to "Humanoid".
+
+## HitObject : () -> ({BasePart})
+
+When fired by the hitbox, it will return a table of baseparts hit within the hitbox. This signal only fires when the hitbox is made with the LookingFor parameter set to "Object".
 
 # Hitbox Parameters
 
@@ -217,7 +221,17 @@ A custom ID for the hitbox if wanted.
 
 ## VelocityPrediction : boolean?
 
-Turns velocity prediction on or off from the beginning. Defaults to on.
+Turns velocity prediction on or off from the beginning. Defaults to on for server-sided hitboxes.
+
+## LookingFor : ("Humanoid" | "Object")?
+
+Sets the LookingFor field to the option provided.
+
+Setting this to Humanoid makes the hitbox look only for models with humanoids within the Alive folder. It'll fire the models found through the HitSomeone signal.
+
+Setting this to Object makes the hitbox look for all objects instead, firing BaseParts through the HitObject signal instead of going through the HitSomeone signal.
+
+This is set to Humanoid by default.
 
 # Dot Product Requirement
 
@@ -251,3 +265,27 @@ Which vector will be used from the part provided. Defaults to LookVector.
 ## Negative : boolean?
 
 If the vector will be flipped. For instance, a RightVector being turned to the left. Defaults to false.
+
+# Interval Timer
+
+The timer class is a new class added in v1.1 that can be used to run callbacks on certain intervals.
+
+This class is used inside Hitbox objects, but they can also be used outside of HitboxClass!
+
+## new(TimeOut : number, Callback : () -> ()) -> IntervalTimer
+
+This method will return an IntervalTimer object that elapses at the interval provided in the TimeOut argument.
+
+## On(self : IntervalTimer) -> ()
+
+This method will turn on a timer that can been turned off using the Off method.
+
+## Off(self : IntervalTimer) -> ()
+
+This method will turn off a timer that can be turned on using the On method.
+
+# Signals
+
+## Elapsed : () -> ()
+
+Fires whenever the timer goes through an interval set by the TimeOut argument.
