@@ -14,6 +14,8 @@ Then, select your Projectiles folder whitin HitboxClass's settings folder. This 
 
 Finally, require the module somewhere on the server! HitboxClass will automatically setup client-server communication if it hasn't been set up yet.
 
+**HitboxClass will only search for entities in the Alive folder set. If nothing is being detected, make sure the things you're looking for are in your set Alive folder.**
+
 # How to Use
 First, require the module.
 
