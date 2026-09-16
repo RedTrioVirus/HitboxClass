@@ -148,6 +148,14 @@ This method runs a single check with the hitbox without needing to Start it, sti
 
 This method will place the hitbox in the desired location. When a hitbox has been "welded", this method is nigh-useless until Unweld is used, so keep that in mind.
 
+## SetSize : (self : Hitbox, NewSize : Vector3 | number) -> ()
+
+This method resizes the hitbox, even while it's running. The new size gets used on the hitbox's next step, so there's no need to stop and restart it.
+
+What you can pass depends on the SpatialOption the hitbox was made with. Magnitude and InRadius hitboxes can only be resized with a number. InBox and InPart hitboxes take either a Vector3 or a number, and a number will be turned into a cube just like it would be if you passed one into SizeOrPart.
+
+Client-sided hitboxes are handled for you, the size change gets sent to the client automatically.
+
 ## ClearTaggedChars : (self : Hitbox) -> ()
 
 This method clears the TaggedCharacters table within the Hitbox, allowing all things hit by the hitbox before to be hit by it again. Use this in order to use the same hitbox multiple times if need be.

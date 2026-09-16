@@ -79,6 +79,7 @@ export type Hitbox = {
 	Stop: (self: Hitbox) -> (),
 	Check: (self: Hitbox) -> ({ Model } | { BasePart })?,
 	SetPosition: (self: Hitbox, Position: CFrame) -> (),
+	SetSize: (self: Hitbox, NewSize: Vector3 | number) -> (),
 	Destroy: (self: Hitbox) -> (),
 	WeldTo: (self: Hitbox, PartToWeldTo: BasePart, OffsetCFrame: CFrame?) -> (),
 	Unweld: (self: Hitbox) -> (),

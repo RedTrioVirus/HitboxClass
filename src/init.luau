@@ -433,6 +433,43 @@ function Hitbox:SetPosition(newPosition: CFrame)
 	end
 end
 
+function Hitbox:SetSize(NewSize: Vector3 | number)
+	-- client-sided hitboxes only exist as a shell on the server, so let the client handle it
+	if self.Client then
+		HitboxRemote:FireClient(self.Client, "SzCh", { _Tick = self.TickVal, Size = NewSize })
+		return
+	end
+
+	if self.SpatialOption == "Magnitude" or self.SpatialOption == "InRadius" then
+		assert(
+			type(NewSize) == "number",
+			"A " .. self.SpatialOption .. " hitbox can only be resized with a number! (HitboxClass)"
+		)
+
+		self.Size = NewSize
+	else
+		assert(
+			typeof(NewSize) == "Vector3" or type(NewSize) == "number",
+			"A " .. self.SpatialOption .. " hitbox can only be resized with a Vector3 or a number! (HitboxClass)"
+		)
+
+		if type(NewSize) == "number" then
+			self.Size = Vector3.new(NewSize, NewSize, NewSize)
+		else
+			self.Size = NewSize
+		end
+	end
+
+	-- keep the part sized the same way _GeneratePart would have made it
+	if self.Part then
+		if typeof(self.Size) == "Vector3" then
+			self.Part.Size = self.Size
+		else
+			self.Part.Size = Vector3.new(self.Size * 2, self.Size * 2, self.Size * 2)
+		end
+	end
+end
+
 function Hitbox:WeldTo(PartToWeldTo: BasePart, OffsetCFrame: CFrame?)
 	if self.Client then
 		HitboxRemote:FireClient(

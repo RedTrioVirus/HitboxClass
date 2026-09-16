@@ -61,6 +61,10 @@ HitboxClassRemote.OnClientEvent:Connect(function(mode, packet)
 		currentHitboxes[packet._Tick]:SetPosition(packet.Position)
 	end
 
+	if mode == "SzCh" then
+		currentHitboxes[packet._Tick]:SetSize(packet.Size)
+	end
+
 	if mode == "Dbg" then
 		currentHitboxes[packet._Tick]:SetDebug(packet.Debug)
 	end
