@@ -16,6 +16,8 @@ Finally, require the module somewhere on the server! HitboxClass will automatica
 
 **HitboxClass will only search for entities in the Alive folder set. If nothing is being detected, make sure the things you're looking for are in your set Alive folder.**
 
+Instead of editing things in the settings folder, you can also set the Alive folder, Projectile folder, and Velocity Prediction Constant at runtime with SetAliveFolder, SetProjectileFolder, and SetVelocityPredictionConstant.
+
 # How to Use
 First, require the module.
 
@@ -81,6 +83,18 @@ This method will destroy all hitboxes with the specified ID. This also destroys 
 
 This method will return the server's hitbox cache. This is where all of the game's hitbox objects are stored.
 
+## SetAliveFolder : (Folder : Instance) -> ()
+
+This method sets the Alive folder at runtime instead of through the settings folder. The folder must be a descendant of workspace.
+
+## SetProjectileFolder : (Folder : Instance) -> ()
+
+This method sets the Projectile folder at runtime instead of through the settings folder. The folder must be a descendant of workspace.
+
+## SetVelocityPredictionConstant : (Constant : number) -> ()
+
+This method sets the Velocity Prediction Constant at runtime instead of through the settings folder.
+
 # Class Settings
 
 ## Alive Folder
@@ -108,6 +122,10 @@ This method will start the hitbox. The HitSomeone signal **will not** fire unles
 ## Stop : (self : Hitbox) -> ()
 
 This method will stop the hitbox by disconnecting all connections and removing the part being used if Part mode is being used. 
+
+## Check : (self : Hitbox) -> ({Model} | {BasePart})?
+
+This method runs a single check with the hitbox without needing to Start it, still firing the HitSomeone or HitObject signal if anything is hit. If the hitbox is server-sided, it'll also return what was hit. This will return nil for client-sided hitboxes since the results come back through the signals instead. If the hitbox is already running via Start, this just performs a normal step instead.
 
 ## SetPosition : (self : Hitbox, Position : CFrame) -> ()
 
@@ -205,9 +223,13 @@ A blacklist that'll be used to exclude certain things from being hit by the hitb
 
 Time between hits on the same hitbox. Use this to allow things to be hit multiple times using the same hitbox.
 
+## Debris : number?
+
+Automatically destroys the hitbox after this many seconds have passed since it was started. Left unset, the hitbox will never destroy itself.
+
 ## DotProductRequirement : DotProductRequirement?
 
-Used for Magnitude mode, allowing a Dot Product to be calculated and checked. Only things within the Dot Product will be hit.
+Allows a Dot Product to be calculated and checked, regardless of what SpatialOption the hitbox is using. Only things within the Dot Product will be hit.
 
 ## Debug : boolean?
 
@@ -254,7 +276,7 @@ local hitboxParams = {
 } :: HitboxTypes.HitboxParams
 ```
 
-The above code will use the HumanoidRootPart's LookVector as the first Vector3. When someone is within the magnitude hitbox, it'll find the dot product of the HumanoidRootPart's LookVector and the vector drawn from the HumanoidRootPart to the person within the hitbox.
+The above code will use the HumanoidRootPart's LookVector as the first Vector3. When someone is within the hitbox, it'll find the dot product of the HumanoidRootPart's LookVector and the vector drawn from the HumanoidRootPart to the person within the hitbox.
 
 ## PartForVector : BasePart (REQUIRED)
 
@@ -289,6 +311,10 @@ This method will turn on a timer that can been turned off using the Off method.
 ## Off(self : IntervalTimer) -> ()
 
 This method will turn off a timer that is currently active.
+
+## Destroy(self : IntervalTimer) -> ()
+
+This method turns off the timer, destroys its Elapsed signal, then clears itself.
 
 # Signals
 

@@ -1,0 +1,21 @@
+{
+  "name": "hitboxclass",
+  "tree": {
+    "$path": "src",
+    "Settings": {
+      "$className": "Folder",
+      "AliveFolder": {
+        "$className": "ObjectValue"
+      },
+      "ProjectileFolder": {
+        "$className": "ObjectValue"
+      },
+      "VelocityPredictionConstant": {
+        "$className": "NumberValue",
+        "$properties": {
+          "Value": 6
+        }
+      }
+    }
+  }
+}

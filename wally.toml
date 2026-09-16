@@ -1,0 +1,11 @@
+[package]
+name = "redtriovirus/hitboxclass"
+description = "An OOP Hitbox module for Roblox"
+version = "1.2.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+license = "MIT"
+authors = ["redtrio"]
+
+[dependencies]
+Signal = "sleitnick/signal@2.0.3"
