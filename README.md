@@ -5,9 +5,26 @@ HitboxClass comes with a variety of features such as easy client-sided hitboxes 
 
 This module uses [Signal](https://sleitnick.github.io/RbxUtil/api/Signal/) by [Sleitnick](https://github.com/Sleitnick).
 
-# How to Set Up
+# How to Set Up with Wally
+
+Just add ```HitboxClass = "redtriovirus/hitboxclass@1.2.0"``` to your wally.toml file and run wally install. This will pull down HitboxClass along with its Signal dependency into your Packages folder.
+
+Make sure your Rojo project file has that Packages folder mapped into your place, usually under ReplicatedStorage.
+
+Then require it like any other package:
+```lua
+local HitboxClass = require(ReplicatedStorage.Packages.HitboxClass)
+local HitboxTypes = require(ReplicatedStorage.Packages.HitboxClass.Types)
+```
+
+After that, follow the folder setup steps below just like you would with a non-Wally install.
+
+# How to Set Up (Non-Wally)
 First, drag the HitboxClass module into your desired place in ReplicatedStorage.
 
+After that, follow the folder setup steps below.
+
+# Folder Setup
 Next, select your Alive folder within HitboxClass's settings folder. This is the folder you store all your players/npcs.
 
 Then, select your Projectiles folder whitin HitboxClass's settings folder. This is the folder you store your VFX and stuff so it doesn't interfere with raycasting and such. This is where the hitbox will be placed while it's active.
